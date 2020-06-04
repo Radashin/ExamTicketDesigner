@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPaneBase" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DesignerController">
+    <stylesheets>
+        <URL value="@/css/style.css" />
+    </stylesheets>
+   <children>
+      <MenuBar layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Файл">
+            <items>
+                  <MenuItem fx:id="menuItemLoad" mnemonicParsing="false" onAction="#menuItemLoadOnAction" text="Загрузить" />
+                  <MenuItem fx:id="menuItemClearAndLoad" mnemonicParsing="false" onAction="#menuItemClearAndLoadOnAction" text="Очистить и загрузить" />
+                  <Menu mnemonicParsing="false" text="Сохранить">
+                     <items>
+                        <MenuItem fx:id="menuItemSaveTXT" mnemonicParsing="false" onAction="#menuItemSaveTXTOnAction" text="в .txt" />
+                        <MenuItem fx:id="menuItemSavePDF" mnemonicParsing="false" onAction="#menuItemSavePDFOnAction" text="в .pdf" />
+                     </items>
+                  </Menu>
+                  <MenuItem fx:id="menuItemPrint" mnemonicParsing="false" onAction="#menuItemPrintOnAction" text="Печать" />
+                  <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#menuItemExitOnAction" text="Выход" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="О программе">
+            <items>
+              <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#menuItemAboutOnAction" text="О программе" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.7718978102189781" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TitledPane animated="false" collapsible="false" layoutY="6.0" text="Список доступных вопросов" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ListView fx:id="listQuestion" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label fx:id="labelQuantityQuestion" layoutX="14.0" layoutY="342.0" text="Количество доступных вопросов:" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
+                                          <Button fx:id="buttonDeleteQuestionInList" layoutX="327.0" layoutY="317.0" mnemonicParsing="false" onAction="#buttonDeleteQuestionInListOnAction" prefHeight="25.0" prefWidth="100.0" text="Удалить" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="5.0" />
+                                          <Separator layoutX="234.0" layoutY="221.0" orientation="VERTICAL" prefHeight="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="140.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TitledPane animated="false" collapsible="false" layoutX="37.0" layoutY="43.0" text="Список созданных билетов" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tableTicket" layoutX="57.0" layoutY="51.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="columnTicketName" prefWidth="75.0" text="Билет" />
+                                              <TableColumn fx:id="columnTicketQuantity" prefWidth="75.0" text="Кол-во вопросов" />
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                          <Label fx:id="labelQuantityTicket" layoutX="14.0" layoutY="342.0" text="Количество созданных билетов:" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="tableQuestionByTicket" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="columnQuestionByTicketNumber" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Номер" />
+                      <TableColumn fx:id="columntQuestionByTicketQuestion" prefWidth="75.0" text="Вопрос" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <GridPane hgap="5.0" layoutX="14.0" layoutY="527.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="textFieldQuestion" promptText="Свой вопрос" GridPane.rowIndex="1" />
+            <CheckBox fx:id="checkBoxMyQuestion" mnemonicParsing="false" text="Свой вопрос" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="buttonDeleteQuestion" mnemonicParsing="false" onAction="#buttonDeleteQuestionOnAction" prefHeight="25.0" prefWidth="125.0" text="Удалить вопрос" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="buttonAddQuestion" mnemonicParsing="false" onAction="#buttonAddQuestionOnAction" prefHeight="25.0" prefWidth="125.0" text="Добавить вопрос" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <GridPane layoutX="-13.0" layoutY="-29.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="237.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="188.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Задайте количество вопросов в билете:" />
+                        <ComboBox fx:id="comboBoxQuantityQuestionByTicket" prefWidth="150.0" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <Button fx:id="buttonAddTicket" mnemonicParsing="false" onAction="#buttonAddTicketOnAction" prefHeight="25.0" prefWidth="125.0" text="Добавить билет" GridPane.columnIndex="2" />
+            <Button fx:id="buttonDeleteTicket" mnemonicParsing="false" onAction="#buttonDeleteTicketOnAction" prefHeight="25.0" prefWidth="125.0" text="Удалить билет" GridPane.columnIndex="3" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

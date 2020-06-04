@@ -1,0 +1,50 @@
+#anchorPaneBase {
+    -fx-background-color: linear-gradient(lightgrey, #9ed361);
+}
+#anchorPaneAddNote {
+    -fx-background-color: linear-gradient(#9ed361, lightgrey);
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#000000, #b2baea);
+    -fx-background-radius: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0, 1);	
+}
+
+/*Псевдо класс hover - действия при наведении мыши*/
+.button:hover {
+    -fx-background-color: linear-gradient(#2a5058, #61a2b1);
+}
+/*Псевдо класс armed - действие при нажатии*/
+.button:armed {
+    -fx-background-color: radial-gradient(radius 50%, #61a2b1, #2a4558, #2a5058);
+}
+
+.table-view{
+-fx-background-color: transparent;
+} 
+
+.table-view .column-header-background{
+-fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+} 
+
+
+.table-view .column-header {
+-fx-background-color: transparent;
+} 
+
+.table-view .column-header-background .label{
+-fx-background-color: transparent;
+-fx-text-fill: white;
+}
+
+#anchorPaneBaseContact{
+    -fx-background-color: linear-gradient(#9ed361, lightgrey);
+}
+
+#anchorPaneBaseAddContact{
+    -fx-background-color: linear-gradient(lightgrey, #9ed361);
+}
